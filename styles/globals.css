@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap');
+
 html,
 body {
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
   padding: 0;
   margin: 0;
   background-color: #f4d59c;
   height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Mountains of Christmas', cursive;
 }
 
 a {
@@ -15,4 +19,35 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.more-snow:after {
+  content: "";
+  position: fixed;
+  top: -3000%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(black, 0.01);
+  background-size: 30%;
+  animation-name: MOVE-BG;
+  animation-duration: 500s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: blur(2px);
+  opacity: 0.8;
+  top: -2000%;
+  background-image: url(https://laviwebfiles.com/stage/codepen/4-2-white-snow-png.png);
+  background-size: 70%;
+  animation-duration: 300s;
+  pointer-events: none;
+}
+
+@keyframes MOVE-BG {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(70%);
+  }
 }
