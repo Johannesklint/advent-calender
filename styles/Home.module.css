@@ -16,7 +16,7 @@
   padding-left: 20px;
   font-size: 15px;
   border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px
+  border-bottom-left-radius: 3px;
 }
 
 .btn {
@@ -99,7 +99,7 @@
   padding: 10px 15px;
   list-style: none;
   color: #f4d59c;
-  border-radius: 3px;;
+  border-radius: 3px;
   margin: 12px;
   text-align: center;
   background-color: #34686f;
@@ -114,7 +114,43 @@
   background-color: #ffffff;
   border: none;
   border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px
+  border-bottom-right-radius: 3px;
 }
-@media (min-width: 600px) {
+.loaderWrapper {
+  display: flex;
+  padding-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #34686f;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
 }

@@ -2,7 +2,14 @@ import styles from "../styles/Home.module.css"
 
 export default function Search({ data, handlePagination, pagination }) {
   if (!data) {
-    return null
+    return (
+      <div className={styles.loaderWrapper}>
+        <div className={styles["lds-ripple"]}>
+          <div />
+          <div />
+        </div>
+      </div>
+    )
   }
 
   if (data.results.length === 0) {
