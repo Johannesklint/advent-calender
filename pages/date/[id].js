@@ -17,12 +17,11 @@ export default function Date() {
   if (!data) {
     return null
   }
-
   if (data.tooEarly) {
     return (
       <div className={styles.tooEarly}>
-        <h3 className={styles.h3}>
-          ah ah ah you are too early, you gotta wait for the date
+        <h3>
+          ah, ah, ah, you are too early, you gotta wait for the date
         </h3>
         <Image src="/giphy.gif" alt="elf" width={200} height={200} />
       </div>

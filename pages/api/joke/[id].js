@@ -80,16 +80,22 @@ function getId(date) {
 }
 
 function setupJoke(joke) {
-  const [jokeQuestion, answer] = joke.split("?")
-  if (!jokeQuestion || !answer) {
-    const [jokeQuestion, answer] = joke.split(",")
-    if (!jokeQuestion || !answer) {
-      const [jokeQuestion, answer] = joke.split(".")
-      return { joke: jokeQuestion, answer }
-    }
-    return { joke: jokeQuestion, answer }
+  if (!joke) {
+    return {}
   }
-  return { joke: jokeQuestion, answer }
+
+  const [firstJokeQuestion, firstAnswer] = joke.split("?")
+  if (firstJokeQuestion || firstAnswer) {
+    return { joke: firstJokeQuestion, answer: firstAnswer }
+  }
+
+  const [secondJokeQuestion, secondAnswer] = joke.split(",")
+  if (secondJokeQuestion || secondAnswer) {
+    return { joke: secondJokeQuestion, answer: secondAnswer }
+  }
+
+  const [thirdJokeQuestion, thirdAnswer] = joke.split(".")
+  return { joke: thirdJokeQuestion, answer: thirdAnswer }
 }
 
 const cache = {}
@@ -107,8 +113,8 @@ export default async function getJoke(req, res) {
     query: { id },
   } = req
 
-  const today = new Date().getDay()
-  if (today <= id) {
+  const today = new Date().getDate()
+  if (id > today) {
     return res.json({ tooEarly: true })
   }
 
@@ -120,5 +126,6 @@ export default async function getJoke(req, res) {
       })
       .then((res) => res.data)
   })
+
   res.json(setupJoke(joke))
 }
